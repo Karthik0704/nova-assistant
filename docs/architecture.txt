@@ -1,0 +1,16 @@
+NOVA Voice Assistant Architecture
+├── Speech Pipeline
+│   ├── Wake Word Detection
+│   ├── Speech Recognition
+│   ├── Natural Language Understanding
+│   └── Text-to-Speech
+├── Core System
+│   ├── Intent Classification
+│   ├── Context Management
+│   └── Dialog Management
+├── Skills Framework
+│   ├── Core Skills
+│   └── Custom Skills
+└── Integration Layer
+    ├── API Gateway
+    └── External Services

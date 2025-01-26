@@ -10,18 +10,16 @@ class SpeechRecognizer:
 
     def listen(self) -> str:
         with sr.Microphone() as source:
-            print("Listening...")
+            print("\nListening...")
             try:
                 audio = self.recognizer.listen(source, timeout=self.timeout)
                 text = self.recognizer.recognize_google(audio)
-                print(f"Recognized: {text}")
+                print(f"You said: {text}")
                 return text.lower()
             except sr.WaitTimeoutError:
-                print("Listening timed out")
                 return ""
             except sr.UnknownValueError:
-                print("Could not understand audio")
                 return ""
             except sr.RequestError as e:
-                print(f"Could not request results; {e}")
+                print(f"Error: {e}")
                 return ""

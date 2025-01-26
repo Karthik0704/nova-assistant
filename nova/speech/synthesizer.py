@@ -1,17 +1,16 @@
 import pyttsx3
-from ..core.config import NovaConfig
 
 class SpeechSynthesizer:
-    def __init__(self, config: NovaConfig):
-        self.config = config
+    def __init__(self, config):
         self.engine = pyttsx3.init()
         self.engine.setProperty('rate', config.get('speech.synthesis.rate', 150))
+        self.engine.setProperty('volume', 1.0)
         
-        voice_id = config.get('speech.synthesis.voice_id')
-        if voice_id:
-            self.engine.setProperty('voice', voice_id)
+        # Set a clear voice
+        voices = self.engine.getProperty('voices')
+        self.engine.setProperty('voice', voices[0].id)  # Index 0 for male, 1 for female
 
-    def speak(self, text: str) -> None:
-        print(f"Assistant: {text}")
+    def speak(self, text: str):
+        print(f"A: {text}")  # Terminal output
         self.engine.say(text)
         self.engine.runAndWait()

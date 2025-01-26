@@ -1,0 +1,18 @@
+Frontend:
+- React/Next.js (Dashboard)
+- WebSocket (Real-time communication)
+
+Backend:
+- Python (Core)
+- FastAPI (REST API)
+- MongoDB (Data storage)
+- Redis (Cache)
+
+AI/ML:
+- PyTorch (Wake word/Emotion detection)
+- Transformers (NLP)
+- Scikit-learn (ML models)
+
+Cloud:
+- AWS/GCP (Deployment)
+- Docker (Containerization)

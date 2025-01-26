@@ -32,6 +32,12 @@ class NovaConfig:
                     'voice_id': None,
                     'rate': 150
                 }
+            },
+            'system': {
+                'timezone': 'UTC'
+            },
+            'apis': {
+                'weather_key': 'YOUR_API_KEY'
             }
         }
         
@@ -45,9 +51,14 @@ class NovaConfig:
         keys = key.split('.')
         value = self.settings
         
-        for k in keys:
-            value = value.get(k, default)
-            if value is None:
-                return default
-        
-        return value
+        try:
+            for k in keys:
+                if isinstance(value, dict):
+                    value = value.get(k)
+                else:
+                    return default
+                if value is None:
+                    return default
+            return value
+        except (KeyError, AttributeError):
+            return default
